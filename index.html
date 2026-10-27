@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAW 5642 · Spring 2027</title>
+<meta name="description" content="LAW 5642, Legal Analytics and Generative AI for Lawyers, at LSU Law in Spring 2027: what the course is, how class works, and what to expect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One reading column on a quiet ground. LSU tonal palette shared with the LAW 5642 design documents. */
+:root{
+  --bg:#fbfaf7; --bg-2:#f3f0e6; --fg:#2a2a2a; --fg-2:#5c5650;
+  --line:#d8d3c7; --purple:#3c1053; --purple-2:#5a3a78; --purple-tint:#efe9f5;
+  --gold:#d29f13; --gold-tint:#f6efd6;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17141b; --bg-2:#211c27; --fg:#ebe6dd; --fg-2:#b4ab9e;
+  --line:#3b3443; --purple:#c9b6e4; --purple-2:#a88fcc; --purple-tint:#2a2135;
+  --gold:#e3b43a; --gold-tint:#2e2817; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17141b; --bg-2:#211c27; --fg:#ebe6dd; --fg-2:#b4ab9e;
+  --line:#3b3443; --purple:#c9b6e4; --purple-2:#a88fcc; --purple-tint:#2a2135;
+  --gold:#e3b43a; --gold-tint:#2e2817; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:4rem}
+.wrap{max-width:68ch;margin:0 auto}
+h1,h2,h3{font-family:var(--display);color:var(--purple);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:500}
+h2{font-size:1.6rem;font-weight:500;padding-top:.6rem;border-top:3px solid var(--gold);margin-top:3rem;margin-bottom:.9rem}
+h3{font-size:1.15rem;font-weight:600;margin-top:1.5rem;margin-bottom:.4rem}
+p{margin:0 0 1rem}
+ul,ol{margin:0 0 1rem;padding-left:1.3rem}
+li{margin-bottom:.4rem}
+a{color:var(--purple-2);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+strong{color:var(--purple);font-weight:600}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2)}
+
+header{padding:2.4rem 0 1.4rem;border-bottom:1px solid var(--line)}
+header .lede{font-family:var(--display);font-size:1.3rem;line-height:1.35;color:var(--fg);margin-top:1rem;max-width:56ch}
+
+/* facts strip */
+.facts{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:1.4rem 0 0}
+.fact{background:var(--bg-2);padding:.75rem .9rem;border-left:3px solid var(--purple);min-width:0}
+.fact .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2)}
+.fact .v{font-weight:600;margin-top:.15rem}
+.fact .n{font-size:.85rem;color:var(--fg-2);margin-top:.1rem}
+
+/* the unit cycle */
+.cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem;margin:1.2rem 0}
+.step{background:var(--bg-2);padding:.8rem .9rem;border-top:3px solid var(--purple);min-width:0}
+.step.apply{border-top-color:var(--gold)}
+.step .t{font-family:var(--display);font-size:1.05rem;font-weight:600;color:var(--purple)}
+.step .d{font-size:.88rem;color:var(--fg-2);margin-top:.25rem}
+.step .m{font-family:var(--mono);font-size:.72rem;margin-top:.45rem;color:var(--fg-2)}
+
+/* units */
+.units{list-style:none;padding:0;margin:1rem 0 0;counter-reset:u}
+.units li{display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;padding:.7rem 0;border-top:1px solid var(--line);margin:0}
+.units li:last-child{border-bottom:1px solid var(--line)}
+.units .n{font-family:var(--mono);color:var(--fg-2);font-size:.9rem;padding-top:.15rem}
+.units .t{font-weight:600;color:var(--purple)}
+.units .d{color:var(--fg-2);font-size:.95rem}
+
+/* callouts */
+.note{background:var(--purple-tint);padding:1rem 1.1rem;margin:1.2rem 0}
+.note.gold{background:var(--gold-tint)}
+.note .eyebrow{display:block;margin-bottom:.3rem}
+.note p:last-child{margin-bottom:0}
+.motto{font-family:var(--display);font-size:1.35rem;font-style:italic;color:var(--purple);margin:1.6rem 0;padding-left:1rem;border-left:3px solid var(--gold)}
+
+.compare{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:1rem 0}
+.card{border:1px solid var(--line);padding:1rem 1.1rem;min-width:0}
+.card h3{margin-top:0}
+.card p:last-child{margin-bottom:0}
+
+footer{margin-top:3.5rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--fg-2)}
+footer p{margin-bottom:.5rem}
+@media (max-width:520px){.cycle{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">LSU Paul M. Hebert Law Center · Spring 2027</div>
+  <h1>LAW 5642 · Legal Analytics and Generative AI for Lawyers</h1>
+  <p class="lede">A semester learning to use generative AI the way a lawyer has to: with the rules in view, the tool in hand, and a decision to make at the end.</p>
+
+  <div class="facts" aria-label="Course facts">
+    <div class="fact"><div class="k">Credits</div><div class="v">2, experiential</div></div>
+    <div class="fact"><div class="k">Meets</div><div class="v">Tue &amp; Thu, 9:40–10:40 a.m.</div><div class="n">Room 301</div></div>
+    <div class="fact"><div class="k">Prerequisites</div><div class="v">None</div><div class="n">No coding, no technical background</div></div>
+    <div class="fact"><div class="k">Textbook</div><div class="v">Free</div><div class="n">Online, see below</div></div>
+    <div class="fact"><div class="k">Instructor</div><div class="v">Professor Will Monroe</div><div class="n">wmonro1@lsu.edu</div></div>
+  </div>
+</header>
+
+<h2 id="what">What this course is</h2>
+<p>Generative AI is already in the practice you are about to join. This course is about using it well: knowing what the tools can do for a lawyer and what they cannot, what the ethics rules require when you use them, and how a firm or a legal aid office should decide to adopt them.</p>
+<p>We do that by making decisions, not by reading about them. Which AI platform should a firm approve for confidential client work? What do you do first when AI gets a citation wrong in a document that has already gone out? Where should a firm's AI policy draw its lines? How should a practice bill for work that AI just made five times faster? You will work those questions with the tools open in front of you, commit to an answer with your team, and then defend it against the other teams in the room.</p>
+<p class="motto">Trying and failing won't harm your grade. Not trying will.</p>
+
+<h2 id="who">Who it is for</h2>
+<p>Any 2L or 3L, whatever practice you are headed for: a large firm, a solo practice, public interest, government, in-house. No prerequisites, no coding, and no technical background assumed. If you have never opened an AI tool, you are the student this course was written for. If you use one every day, you will leave knowing when not to.</p>
+
+<h2 id="how">How class works</h2>
+<p>I am in the process of redesigning the course for spring around <strong>team-based learning</strong>. My current thinking is that on the first day I place you on a team, and you stay on that team all semester. The course is organized into seven units, and every unit follows the same shape:</p>
+
+<div class="cycle" aria-label="The shape of a unit">
+  <div class="step"><div class="t">Read</div><div class="d">The chapter and one short companion source, before the unit opens.</div><div class="m">at home</div></div>
+  <div class="step"><div class="t">Readiness check</div><div class="d">A short multiple-choice check on the reading. First on your own, then the same questions with your team.</div><div class="m">first meeting of the unit</div></div>
+  <div class="step apply"><div class="t">Decide</div><div class="d">Your team works a real decision with the AI tools in hand, commits to an answer, and defends it when every team reveals at once.</div><div class="m">the rest of the unit</div></div>
+</div>
+
+<p>Most of class time goes to the deciding. Lecture is short and aimed at whatever the readiness checks show the room is still unsure about.</p>
+<div class="note">
+  <span class="eyebrow">My current plan</span>
+  <p><strong>No group work will take place outside of class.</strong> Team work happens in the room, during class time, so no grade of yours depends on scheduling a meeting with teammates or on a teammate doing work outside it.</p>
+</div>
+
+<h3>The seven units</h3>
+<ol class="units">
+  <li><span class="n">1</span><div><div class="t">Foundations</div><div class="d">What generative AI is, how it works in plain terms, and the ways it fails.</div></div></li>
+  <li><span class="n">2</span><div><div class="t">Choosing tools</div><div class="d">The AI tools built for lawyers, and how to evaluate one before a firm trusts it.</div></div></li>
+  <li><span class="n">3</span><div><div class="t">Prompting and retrieval</div><div class="d">Getting useful work out of a model, and grounding it in the right documents.</div></div></li>
+  <li><span class="n">4</span><div><div class="t">Ethics and regulation</div><div class="d">The Model Rules, the ABA's guidance, court standing orders, and the lawyers who were sanctioned.</div></div></li>
+  <li><span class="n">5</span><div><div class="t">The firm</div><div class="d">What AI does to billing, staffing, and the business of practice, and how a firm actually adopts it.</div></div></li>
+  <li><span class="n">6</span><div><div class="t">Access to justice</div><div class="d">Where AI can close the justice gap, and where it must not.</div></div></li>
+  <li><span class="n">7</span><div><div class="t">Transformation</div><div class="d">Online dispute resolution, prediction, and the future of practice.</div></div></li>
+</ol>
+
+<h2 id="week">What I ask of you each week</h2>
+<ul>
+  <li><strong>Read before the unit opens.</strong> The readiness check is on the reading, and your team is counting on you to have done it.</li>
+  <li><strong>Come to class.</strong> The work happens in the room, with your team. It cannot be made up at home.</li>
+  <li><strong>Bring a laptop.</strong> You use the AI tools in class, on your own machine.</li>
+</ul>
+
+<h2 id="graded">What is graded</h2>
+<p>Most of your grade is your own work: the individual readiness checks, short pieces of writing that carry each unit's decision into your own plan, and the capstone. A share of the grade is team work. A small share is your teammates' evaluation of your contribution to the team.</p>
+<p>The capstone is an <strong>AI integration plan</strong>: a plan for how a practice you choose should adopt generative AI, built up across the semester from the decisions the units ask you to make.</p>
+<p>There is no final exam.</p>
+
+<h2 id="book">The textbook</h2>
+<p>Thomas G. Martin, <em>Generative AI and the Delivery of Legal Services: A Law Student Textbook and Workbook for Understanding and Implementing AI in Law</em> (LawDroid Press). It is an online textbook, free to law students. The author asks that you register at <a href="https://genailawtextbook.com/">genailawtextbook.com</a>, which also subscribes you to his weekly newsletter; the book itself is read at <a href="https://books.lawdroidmanifesto.com/3/generative-ai-and-the-delivery-of-legal-services">books.lawdroidmanifesto.com</a>. It was written for law students, assumes no technical background, and comes with mini-lecture videos, podcasts, and a chatbot tutor. There is nothing to buy.</p>
+
+<h2 id="5622">How it differs from LAW 5622</h2>
+<div class="compare">
+  <div class="card">
+    <h3>LAW 5622 · Law Practice Technology</h3>
+    <p>Builds the workflows a small firm runs on, in Microsoft 365: intake, calendaring, billing, document automation, e-filing. The tools are the subject.</p>
+  </div>
+  <div class="card">
+    <h3>LAW 5642 · This course</h3>
+    <p>About generative AI: what it can do for a lawyer, what it cannot, what the rules require, and how a practice should adopt it. The judgment is the subject.</p>
+  </div>
+</div>
+<p>They are different courses, and neither is a prerequisite for the other.</p>
+
+<div class="note gold">
+  <span class="eyebrow">Still being designed</span>
+  <p>The course is being rebuilt for spring, and this page describes the design as it stands. The unit calendar, the exact grading weights, and the AI tools we use will be settled before the semester and posted here as they are. What is on this page now is what the course is and how it runs.</p>
+</div>
+
+<h2 id="contact">Questions</h2>
+<p>Email me at <a href="mailto:wmonro1@lsu.edu">wmonro1@lsu.edu</a> and start the subject line with <strong>LAW 5642 -</strong> so it surfaces quickly. My office is W324 in the Law Center; if the door is open, come in.</p>
+
+<footer>
+  <p>Professor Will Monroe · LSU Paul M. Hebert Law Center · Last updated October 27, 2026.</p>
+  <p>Course schedule details are from the Law Center's Spring 2027 course schedule; check the registrar's listing for the current room and time.</p>
+</footer>
+
+</div>
+</body>
+</html>
